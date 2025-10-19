@@ -1,0 +1,404 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box; 
+}
+
+.header{
+  position: fixed;
+  background-color: #234C6A;
+  color: white;
+  display: flex;
+  height: 5rem;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  min-width: 100vw;
+  overflow-x: hidden;
+  box-sizing: border-box;
+}
+
+.logo img{
+  height: 2.5rem;
+  border-radius: 50%;
+}
+.logo{
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.logo p{
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+.nav nav a{
+  text-decoration: none;
+  margin: 1rem;
+  color: white;
+  font-size: 1rem;
+}
+
+.login{
+  margin-right: 1.5rem;
+  width: 14rem;
+}
+.Signup{
+  height: 3rem;
+  width: 6rem;
+  margin-left: .5rem;
+  border-radius: .5rem;
+  border: none;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+.Signup:hover{
+  background-color: #9B5DE0;
+}
+.nav nav a:hover{
+  color:#9B5DE0 ;
+}
+
+
+
+body{
+  min-height: 100vh;
+}
+
+/* Modal Overlay */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+  z-index: 1000;
+}
+
+.modal-overlay.show {
+  opacity: 1;
+  visibility: visible;
+}
+
+.maincontainer{
+  background-color: antiquewhite;
+  height: 60vh;
+  width: 80vw;
+  max-width: 900px;
+  display: flex;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+  transform: scale(0.7);
+  transition: transform 0.3s ease;
+}
+
+.modal-overlay.show .maincontainer {
+  transform: scale(1);
+}
+
+.first{
+  width: 45vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1.5rem;
+  padding: 2rem;
+}
+
+.gmail,
+.pass{
+  width: 100%;
+}
+
+#mobile,
+#password{
+  height: 3rem;
+  width: 100%;
+  padding-left: 1rem;
+  border: none;
+  outline: none;
+  border-radius: 5px;
+  font-size: 1rem;
+}
+
+.submit{
+  height: 2.5rem;
+  width: 7rem;
+  border: none;
+  font-size: 1rem;
+  font-weight: 700;
+  background-color: #9B5DE0;
+  border-radius: .8rem;
+  cursor: pointer;
+}
+
+.secend{
+  background-color: #9B5DE0;
+  flex: 1;
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-start;
+  padding: 1rem;
+  border-radius: 5rem 0 0 5rem;
+}
+
+.singn-log{
+  text-decoration: none;
+  color: #9B5DE0;
+  font-weight: 600;
+}
+
+.secend i{
+  font-size: 2rem;
+  color: white;
+  cursor: pointer;
+  transition: transform 0.3s;
+}
+
+.secend i:hover{
+  transform: rotate(90deg);
+}
+.logo i{
+  visibility: hidden;
+}
+
+.humberger{
+  background-color: #777C6D;
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 40%;
+  opacity: 0;
+  visibility: hidden;
+  transition: all .3s ease;
+  transform:translateX(-100%);
+  z-index: 999;
+  padding-top: 4rem;
+}
+
+.AncherLink {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.AncherLink a{
+  text-decoration: none;
+  color: white;
+  font-size: 1rem;
+  font-weight: 700;
+  padding: 0.8rem 1rem;
+  transition: all 0.3s ease;
+}
+
+.AncherLink a:hover{
+  background-color: #9B5DE0;
+  padding-left: 1.5rem;
+}
+
+.humberger i{
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  font-size: 1.8rem;
+  cursor: pointer;
+  color: white;
+}
+
+.humberger.show2{
+  visibility: visible;
+  opacity: 1;
+  transform: translateX(0);
+}
+@media screen and (max-width: 833px) {
+  .logo img{
+    visibility: collapse;
+  }
+
+  .logo{
+    margin-left: 0;
+  }
+  nav{
+    visibility: hidden;
+    opacity: 0;
+    display: block;
+  }
+   .logo i{
+    visibility: visible;
+    font-size: 1.6rem;
+   }
+  .login{
+    width: 8rem;
+    display: flex;
+    margin-right: 3rem;
+  }
+
+  /* Second div hide but cross button visible */
+  .maincontainer .secend{
+    background-color: transparent;
+    flex: 0;
+    width: auto;
+    min-width: 0;
+    padding: 0;
+    border-radius: 0;
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+  }
+
+  .maincontainer .first{
+    width:100%;
+  }
+  .maincontainer .secend i{
+    display: block;
+    font-size: 1.8rem;
+    color: #333;
+  }
+
+  .maincontainer {
+    position: relative;
+  }
+
+  .header{
+    width: 100%;
+    padding: 0 1rem;
+  }
+  .login .Signup{
+    height: 2rem;
+    width: 5rem;
+    font-size: .9rem;
+    font-weight: 500;
+  }
+}
+
+@media screen and (max-width: 424px){
+  .logo img{
+    visibility: hidden;
+    display: none;
+  }
+
+  .logo p{
+    margin-left: .8rem;
+    font-size: .8rem;
+  }
+
+  .login .Signup{
+    height: 1.5rem;
+    width: 3rem;
+    font-size: .5rem;
+  }
+  
+  .header{
+    width: 100%;
+    padding: 0;
+    min-width: 100vw;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .login{
+    margin-right: 1.5rem;
+  }
+  .nav{
+    display: none;
+  }
+  .logo{
+    margin-left: 10px;
+  }
+  .logo i{
+    visibility: visible;
+    font-size: 1.2rem;
+   }
+}
+@media screen and (max-width: 390px){
+  .header{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .logo{
+    margin-left: 10px;
+  }
+  .login{
+    margin-right: 0;
+  }
+
+  /* Second div background hide but cross button visible */
+  .maincontainer .secend{
+    background-color: transparent;
+    flex: 0;
+    width: auto;
+    min-width: 0;
+    padding: 0;
+    border-radius: 0;
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+  }
+
+  .maincontainer .secend i{
+    display: block;
+    font-size: 1.8rem;
+    color: #333;
+  }
+
+  .maincontainer {
+    position: relative;
+  }
+}
+@media screen and (max-width: 440px){
+  .maincontainer .first #mobile,
+  .maincontainer .first #password{
+    font-size: 0.7rem;
+  }
+  
+  .maincontainer .first input::placeholder{
+    font-size: 0.65rem;
+  }
+
+  .maincontainer .first button{
+    font-size: 0.7rem;
+    height: 2rem;
+    width: 5rem;
+  }
+
+  .maincontainer .first p,
+  .maincontainer .first a{
+    font-size: 0.8rem;
+  }
+}
+
+@media screen and (max-width: 376px){
+  .maincontainer .secend{
+    top: 0.5rem !important;  /* Parent div এর position change */
+    right: 0.1rem !important;
+  }
+  
+  .maincontainer .secend i{
+    font-size: 1.5rem;  /* Button size ছোট করলাম */
+  }
+  
+  .maincontainer{
+    width: 90vw;  /* Container slightly ছোট */
+  }
+}
+
+@media screen and (max-height: 348px){
+  .AncherLink{
+    overflow-y: scroll;
+  }
+}
