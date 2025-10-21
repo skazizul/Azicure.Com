@@ -577,7 +577,6 @@ main{
   margin: 1px 3px 10px 1px;
   display: flex;
   flex-direction: column;
-  
 }
 
 .men-card img{
@@ -630,4 +629,23 @@ main{
 .discountRate i{
   font-size:12px;
   font-weight: 700;
+}
+
+@media screen and (max-width: 776px){
+  .men-card{
+    width: 250px !important;
+  }
+}
+
+@media screen and (max-width: 565px){
+  .men-card{
+    width: 200px !important;
+  }
+}
+
+@media screen and (max-width: 442px){
+  .men-card{
+    width: 300px !important;
+    height: auto;
+  }
 }
