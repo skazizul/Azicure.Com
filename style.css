@@ -633,19 +633,50 @@ main{
 
 @media screen and (max-width: 776px){
   .men-card{
-    width: 250px !important;
+    width: 200px !important;
   }
 }
 
-@media screen and (max-width: 565px){
+@media screen and (max-width: 672px){
+  .men-card{
+    width: 180px !important;
+  }
+}
+
+@media screen and (max-width: 604px){
+  .men-card{
+    width: 170px !important;
+  }
+}
+
+
+@media screen and (max-width: 575px){
+  .men-card{
+    width: 230px !important;
+  }
+}
+@media screen and (max-width: 518px){
   .men-card{
     width: 200px !important;
   }
 }
 
-@media screen and (max-width: 442px){
+@media screen and (max-width: 450px){
   .men-card{
-    width: 300px !important;
-    height: auto;
+    width: 150px !important;
+    height: 330px !important;
   }
 }
+
+@media screen and (max-width: 335px){
+  .men-card{
+    width: 250px !important;
+    margin-top: 10px !important;
+  }
+}
+@media screen and (max-width: 857px){
+  .men-card{
+    width: 230px !important;
+  }
+}
+
