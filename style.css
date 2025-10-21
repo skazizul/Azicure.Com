@@ -631,19 +631,30 @@ main{
   font-weight: 700;
 }
 
-@media screen and (max-width: 776px){
+@media screen and (max-width: 857px){
+  .men-card{
+    width: 230px !important;
+  }
+}
+@media screen and (max-width: 780px){
+  .men-card{
+    width: 300px !important;
+  }
+}
+
+@media screen and (max-width: 774px){
+  .men-card{
+    width: 228px !important;
+  }
+}
+
+@media screen and (max-width: 770px){
   .men-card{
     width: 200px !important;
   }
 }
 
-@media screen and (max-width: 672px){
-  .men-card{
-    width: 180px !important;
-  }
-}
-
-@media screen and (max-width: 604px){
+@media screen and (max-width: 664px){
   .men-card{
     width: 170px !important;
   }
@@ -661,22 +672,18 @@ main{
   }
 }
 
-@media screen and (max-width: 450px){
+@media screen and (max-width: 455px){
   .men-card{
-    width: 150px !important;
+    width: 180px !important;
     height: 330px !important;
   }
 }
 
-@media screen and (max-width: 335px){
+@media screen and (max-width: 400px){
   .men-card{
     width: 250px !important;
     margin-top: 10px !important;
   }
 }
-@media screen and (max-width: 857px){
-  .men-card{
-    width: 230px !important;
-  }
-}
+
 
