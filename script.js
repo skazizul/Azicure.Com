@@ -540,6 +540,35 @@ let logoutFunctionality = () => {
   });
 };
 
+// Smooth scroll functionality for navigation links
+let smoothScrollFunctionality = () => {
+  // Select all navigation links (both desktop and mobile)
+  let navLinks = document.querySelectorAll('.nav a[href^="#"], .AncherLink a[href^="#"]');
+  
+  navLinks.forEach(link => {
+    link.addEventListener('click', (e) => {
+      e.preventDefault();
+      
+      let targetId = link.getAttribute('href');
+      let targetSection = document.querySelector(targetId);
+      
+      if (targetSection) {
+        // Smooth scroll to section
+        targetSection.scrollIntoView({
+          behavior: 'smooth',
+          block: 'start'
+        });
+        
+        // Close hamburger menu if open (mobile)
+        let hamDiv = document.querySelector(".humberger");
+        if (hamDiv) {
+          hamDiv.classList.remove("show2");
+        }
+      }
+    });
+  });
+};
+
 uploadProfilePictureFunctionality();
 womenCollectionFunctionality();
 menCollectionFunctionality();
@@ -548,5 +577,8 @@ hamBurgerFunctionality();
 loginFunctinality();
 signupFunctionality();
 logoutFunctionality();
+smoothScrollFunctionality();
+
+
 
 
