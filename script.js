@@ -5,13 +5,17 @@ let signupFunctionality = () => {
   let signupModel = document.querySelector("#signupModal");
   let signupClosebtn = document.querySelector("#signupModal i");
   let signupGmail = document.querySelector("#signupGmail #mobile");
-  let signupSubmitBtn = document.querySelector("#signupModal .submit");
+  // pick the actual Sign Up button (the file input also has class 'submit')
+  let signupSubmitBtn = signupModel.querySelector("button.submit:not(#get-otp)");
   let signupOTP = document.querySelector("#passwordGmain #password");
   let getotp = document.querySelector("#get-otp");
   let generatedOTP = null; // OTP store korar jonno variable
   let signupUsername = document.querySelector("#signupUsername input");
   let modal = document.querySelector("#loginModal");
   let ancharsignin = document.querySelector("#ancharLog");
+  // scope file input to signup modal only
+  let newimage = signupModel.querySelector(".profilePicture input");
+
   signup.addEventListener("click", () => {
     signupModel.classList.add("show");
   });
@@ -29,6 +33,11 @@ let signupFunctionality = () => {
       signupModel.classList.remove("show");
     }
   });
+
+  // NOTE: file-change handling for profile uploads is handled in
+  // uploadProfilePictureFunctionality(). Do not attach a change
+  // listener here because it caused the file-input click to be
+  // treated as the signup button (the input also had class 'submit').
   // Get OTP button e click korle OTP generate hobe
   getotp.addEventListener("click", () => {
     let email = signupGmail.value.trim();
@@ -90,31 +99,66 @@ let signupFunctionality = () => {
         return;
       }
 
-      // New user data create
-      let newUser = {
-        email: email,
-        username: username,
-        registeredAt: new Date().toLocaleString(),
+      // Function to create and save user with profile image
+      const saveUserWithImage = (profileImageData) => {
+        // New user data create
+        let newUser = {
+          email: email,
+          username: username,
+          registeredAt: new Date().toLocaleString(),
+          profileImage: profileImageData, // DataURL or null
+        };
+
+        // Array te new user add korbo
+        usersArray.push(newUser);
+
+        // Updated array localStorage e save korbo
+        localStorage.setItem("Users", JSON.stringify(usersArray));
+
+        // Current user set korbo (login state maintain korar jonno)
+        localStorage.setItem("currentUser", JSON.stringify(newUser));
+
+        alert(
+          `Signup Success! ✅ Welcome ${username}! Total users: ${usersArray.length}`
+        );
+
+        // Modal close kore debo
+        signupModel.classList.remove("show");
+
+        // Form reset
+        signupGmail.value = "";
+        signupOTP.value = "";
+        signupUsername.value = "";
+        newimage.value = "";
+        generatedOTP = null;
+
+        // Image update korbo page e
+        let currimage = document.querySelector(".picture img");
+        if (profileImageData && currimage) {
+          currimage.src = profileImageData;
+        }
       };
 
-      // Array te new user add korbo
-      usersArray.push(newUser);
+      // Check if user selected a profile image
+      let file = newimage.files && newimage.files[0];
+      if (file) {
+        // Validate file type
+        const allowedTypes = ["image/jpeg", "image/jpg", "image/png"];
+        if (!allowedTypes.includes(file.type)) {
+          alert("Please select a valid image file (JPG, JPEG, PNG)");
+          return;
+        }
 
-      // Updated array localStorage e save korbo
-      localStorage.setItem("Users", JSON.stringify(usersArray));
-
-      alert(
-        `Signup Success! ✅ Welcome ${username}! Total users: ${usersArray.length}`
-      );
-
-      // Modal close kore debo
-      signupModel.classList.remove("show");
-
-      // Form reset
-      signupGmail.value = "";
-      signupOTP.value = "";
-      signupUsername.value = "";
-      generatedOTP = null;
+        // Read file and convert to DataURL
+        let reader = new FileReader();
+        reader.onload = (e) => {
+          saveUserWithImage(e.target.result);
+        };
+        reader.readAsDataURL(file);
+      } else {
+        // No image selected, save without profile image
+        saveUserWithImage(null);
+      }
     } else {
       alert("Invalid OTP! ❌ Please try again.");
     }
@@ -131,9 +175,15 @@ let loginFunctinality = () => {
   let closeBtn = document.querySelector("#closeModal");
   let logingamil = document.querySelector("#login-gmail input");
   let loginpass = document.querySelector("#login-pass input");
-  let loginSubmitBtn = document.querySelector("#loginModal .submit");
+  // pick the actual Login button (there are other .submit elements like file input)
+  let _loginButtons = modal.querySelectorAll("button.submit");
+  let loginSubmitBtn = _loginButtons[_loginButtons.length - 1];
   let anchorlink = document.querySelector(".singn-log");
   let signupModel = document.querySelector("#signupModal");
+  // scope file input to the login modal
+  let newimage = modal.querySelector(".profilePicture input");
+  let deleteimage = document.querySelector(".profilePicture button");
+  let currentImg = document.querySelector(".picture img");
   // Login button e click korle modal open hobe
   login.addEventListener("click", () => {
     modal.classList.add("show");
@@ -143,7 +193,7 @@ let loginFunctinality = () => {
     signupModel.classList.add("show");
     modal.classList.remove("show");
   });
-
+  
   // Close button e click korle modal close hobe
   closeBtn.addEventListener("click", () => {
     modal.classList.remove("show");
@@ -163,11 +213,13 @@ let loginFunctinality = () => {
     // Validation
     if (loginUserGmail === "") {
       alert("Please enter your email!");
+      
       return;
     }
 
     if (loginUserName === "") {
       alert("Please enter your username!");
+      
       return;
     }
 
@@ -186,8 +238,21 @@ let loginFunctinality = () => {
       (user) => user.email === loginUserGmail && user.username === loginUserName
     );
 
+    
+
     if (foundUser) {
       alert(`Login Successful! ✅ Welcome back ${foundUser.username}!`);
+      
+      // Current user set korbo localStorage e
+      localStorage.setItem("currentUser", JSON.stringify(foundUser));
+      
+      // Profile image load korbo
+      if (foundUser.profileImage && currentImg) {
+        currentImg.src = foundUser.profileImage;
+      } else if (currentImg) {
+        currentImg.src = "new.jpg";
+      }
+      
       modal.classList.remove("show");
       logingamil.value = "";
       loginpass.value = "";
@@ -195,9 +260,88 @@ let loginFunctinality = () => {
       alert("Invalid email or username! ❌ Please try again.");
     }
   };
-
+   
   loginSubmitBtn.addEventListener("click", loginProcess);
 };
+let uploadProfilePictureFunctionality = ()=>{
+  let currimage = document.querySelector(".picture img");
+  let newimage = document.querySelector(".profilePicture input");
+  let deleteimage = document.querySelector(".profilePicture button");
+
+  // Page load e current user er image load korbo
+  window.addEventListener("load",()=>{
+    let currentUserData = localStorage.getItem("currentUser");
+    if(currentUserData){
+      let currentUser = JSON.parse(currentUserData);
+      if(currentUser.profileImage && currimage){
+        currimage.src = currentUser.profileImage;
+      }
+    }
+  })
+
+  // Naya image upload korle
+  newimage.addEventListener("change",(e)=>{
+    let file = e.target.files[0];
+    if(!file) return;
+    
+    // File type validation
+    const allowedTypes = ["image/jpeg", "image/jpg", "image/png"];
+    if (!allowedTypes.includes(file.type)) {
+      alert("Please select a valid image file (JPG, JPEG, PNG)");
+      return;
+    }
+    
+    let reader = new FileReader();
+    reader.onload = (eve)=>{
+      currimage.src = eve.target.result;
+      
+      // Current user er profile image update korbo
+      let currentUserData = localStorage.getItem("currentUser");
+      if(currentUserData){
+        let currentUser = JSON.parse(currentUserData);
+        currentUser.profileImage = eve.target.result;
+        localStorage.setItem("currentUser", JSON.stringify(currentUser));
+        
+        // Users array te o update korbo
+        let allUsers = localStorage.getItem("Users");
+        if(allUsers){
+          let usersArray = JSON.parse(allUsers);
+          let userIndex = usersArray.findIndex(u => u.email === currentUser.email);
+          if(userIndex !== -1){
+            usersArray[userIndex].profileImage = eve.target.result;
+            localStorage.setItem("Users", JSON.stringify(usersArray));
+          }
+        }
+      }
+    }
+    reader.readAsDataURL(file);
+  })
+    
+  deleteimage.addEventListener("click",()=>{
+    currimage.src = "new.jpg";
+    
+    // Current user er profile image remove korbo
+    let currentUserData = localStorage.getItem("currentUser");
+    if(currentUserData){
+      let currentUser = JSON.parse(currentUserData);
+      currentUser.profileImage = null;
+      localStorage.setItem("currentUser", JSON.stringify(currentUser));
+      
+      // Users array theke o remove korbo
+      let allUsers = localStorage.getItem("Users");
+      if(allUsers){
+        let usersArray = JSON.parse(allUsers);
+        let userIndex = usersArray.findIndex(u => u.email === currentUser.email);
+        if(userIndex !== -1){
+          usersArray[userIndex].profileImage = null;
+          localStorage.setItem("Users", JSON.stringify(usersArray));
+        }
+      }
+    }
+    newimage.value = '';
+  })
+
+}
 let hamBurgerFunctionality = () => {
   let hamburger = document.querySelector(".logo i");
   let hamDiv = document.querySelector(".humberger");
@@ -360,9 +504,49 @@ let menCollectionFunctionality = () => {
   mensAll.innerHTML = innerhtml;
 };
 
+let womenCollectionFunctionality = ()=>{
+  let women = document.querySelector("#women");
+  let innerhtml = '';
+  womenCart.forEach((item) =>{
+    innerhtml += `
+    <div class="men-card">
+          <img src=${item.Img} alt="">
+          <div class="Sponsored">${item.sponsored}</div>
+          <div class="companyName">${item.company}</div>
+          <div class="productName">${item.productName}</div>
+          <div class="prices">
+            <span class="currentPrice">₹ ${item.currentPrice}</span>
+            <span class="discountPrice">${item.distcountPrice}</span>
+            <span class="discountRate"><i class="fa-solid fa-arrow-down"></i>${item.discountRte}%</span>
+          </div>  
+    </div>`;
+  });
+  women.innerHTML = innerhtml;
+}
+
+// Logout functionality - picture image e click korle menu dekhabe
+let logoutFunctionality = () => {
+  let profilePic = document.querySelector(".picture img");
+  
+  // Profile picture e right-click korle logout option
+  profilePic.addEventListener("contextmenu", (e) => {
+    e.preventDefault();
+    let confirmLogout = confirm("Do you want to logout?");
+    if(confirmLogout){
+      localStorage.removeItem("currentUser");
+      profilePic.src = "new.jpg";
+      alert("Logged out successfully! ✅");
+    }
+  });
+};
+
+uploadProfilePictureFunctionality();
+womenCollectionFunctionality();
 menCollectionFunctionality();
 slideBarFunctionality();
 hamBurgerFunctionality();
 loginFunctinality();
 signupFunctionality();
+logoutFunctionality();
+
 

@@ -85,9 +85,13 @@ header{
 
 #login-fun{
   font-size: 30px;
+  border-radius: 50%;
+  height: 40px;
+  width: 40px;
 }
 
 #signup-fun{
+  margin-top: 2px;
   font-size: 26px;
 }
 
@@ -98,6 +102,51 @@ body{
 main{
   padding-top: 5rem;
 }
+
+.profilePicture{
+  width: 100%;
+  
+}
+
+.profilePicture p{
+  font-size: 18px;
+  font-weight: 700;
+}
+.profilePicture .submit{
+  margin-top: 20px;
+  margin-right: 20px;
+  height: 2.5rem;
+  width: 7rem;
+  border: none;
+  font-size: 1rem;
+  font-weight: 700;
+  border: none;
+  font-size: 1rem;
+  font-weight: 700;
+}
+.profilePicture input[type="file"]{
+  color: transparent;
+}
+
+.picture img{
+  height: 100%;
+  width: 100%;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.profilePicture input[type="file"]::-webkit-file-upload-button{
+  height: 2.4rem;
+  width: 7rem;
+  border: none;
+  font-size: 1rem;
+  font-weight: 700;
+  border: none;
+  font-size: 1rem;
+  font-weight: 700;
+  background-color: #9B5DE0;
+}
+
 
 /* Modal Overlay */
 .modal-overlay {
@@ -265,7 +314,7 @@ main{
   opacity: 1;
   transform: translateX(0);
 }
-@media screen and (max-width: 854px) {
+@media screen and (max-width: 903px) {
   .logo img{
     visibility: collapse;
   }
@@ -326,7 +375,19 @@ main{
   }
 }
 
-@media screen and (max-width: 424px){
+@media screen and (max-width: 860px){
+  .login{
+    gap: 30px;
+  }
+}
+
+@media screen and (max-width: 727px){
+  .login{
+    gap: 40px;
+  }
+}
+
+@media screen and (max-width: 448px){
   .logo img{
     visibility: hidden;
     display: none;
@@ -342,7 +403,9 @@ main{
     width: 3rem;
     font-size: .5rem;
   }
-  
+  .login{
+    margin-right: 40px;
+  }
   .header{
     width: 100%;
     padding: 0;
@@ -365,7 +428,7 @@ main{
     font-size: 1.2rem;
    }
 }
-@media screen and (max-width: 390px){
+@media screen and (max-width: 397px){
   .header{
     display: flex;
     align-items: center;
@@ -376,7 +439,8 @@ main{
     margin-left: 10px;
   }
   .login{
-    margin-right: 0;
+    margin-right: 15px;
+    gap: 0;
   }
 
   /* Second div background hide but cross button visible */

@@ -88,3 +88,94 @@ let menCard = [
   },
 
 ];
+
+
+let womenCart = [
+  {
+    id: '101',
+    sponsored: '',
+    Img: 'images/Women/img1.webp',
+    company: 'FABUNNA COTTON',
+    productName: 'Women Viscose Rayon Kurta Pant Dupatta Set',
+    currentPrice: 362,
+    distcountPrice : 2099,
+    discountRte: 82,
+  },
+
+  {
+    id: '102',
+    sponsored: 'Sponsored',
+    Img: 'images/Women/img2.webp',
+    company: 'DUOSOFT',
+    productName: 'Doctor Slipper|Super Soft|Orthopedic|Lightweight|Diabet...',
+    currentPrice: 202,
+    distcountPrice : 799,
+    discountRte: 74,
+  },
+
+  {
+    id: '103',
+    sponsored: '',
+    Img: 'images/Women/img3.webp',
+    company: 'LTA',
+    productName: 'Women Regular High Rise Blue Jeans',
+    currentPrice: 673,
+    distcountPrice : 1999,
+    discountRte: 66,
+  },
+
+  {
+    id: '104',
+    sponsored: '',
+    Img: 'images/Women/img4.webp',
+    company: 'URSHIA',
+    productName: 'Solid Georgette Women Maroon Scarf',
+    currentPrice: 198,
+    distcountPrice : 500,
+    discountRte: 60,
+  },
+
+  {
+    id: '105',
+    sponsored: '',
+    Img: 'images/Women/img5.webp',
+    company: 'Dark Blue',
+    productName: 'Embellished Bollywood Pure Silk Saree',
+    currentPrice: 1815,
+    distcountPrice : 4599,
+    discountRte: 60,
+  },
+
+  {
+    id: '106',
+    sponsored: 'Sponsored',
+    Img: 'images/Women/img6.webp',
+    company: 'HAYSCH',
+    productName: 'Purple Women Hand-held Bag Sling Bags',
+    currentPrice: 297,
+    distcountPrice : 1099,
+    discountRte: 72,
+  },
+
+  {
+    id: '107',
+    sponsored: '',
+    Img: 'images/Women/img7.webp',
+    company: 'TINALIVA',
+    productName: 'Brass Crystal Gold-plated Bangle',
+    currentPrice: 144,
+    distcountPrice : 1499,
+    discountRte: 90,
+  },
+
+  {
+    id: '108',
+    sponsored: '',
+    Img: 'images/Women/img8.webp',
+    company: 'ZONFAB',
+    productName: 'Semi Stitched Georgette Salwar Suit Material Embroidere...',
+    currentPrice: 1251,
+    distcountPrice : 3999,
+    discountRte: 68,
+  }
+];
