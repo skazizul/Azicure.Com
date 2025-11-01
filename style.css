@@ -468,6 +468,9 @@ main{
     display: none !important;
     
   }
+  .logo{
+    margin-left: 24px;
+  }
 
 }
 
