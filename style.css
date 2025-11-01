@@ -208,11 +208,15 @@ main{
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
+  padding-right: 10px;
 }
 
 .searchinput input::placeholder{
   color: #696e79;
   opacity: 1;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
 }
 
 .maincontainer{
@@ -523,6 +527,12 @@ main{
   }
   .logo p {
     position:static;
+  }
+  .searchinput input{
+    font-size: 11px;
+  }
+  .searchinput input::placeholder{
+    font-size: 11px;
   }
 }
 
