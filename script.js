@@ -496,7 +496,7 @@ let menCollectionFunctionality = () => {
           <div class="prices">
             <span class="currentPrice">₹ ${item.currentPrice}</span>
             <span class="discountPrice">${item.distcountPrice}</span>
-            <span class="discountRate"><i class="fa-solid fa-arrow-down"></i>${item.discountRte}%</span>
+            <span class="discountRate"><i class="fa-solid fa-arrow-down"></i>${item.discountRte}% off</span>
           </div>  
     </div>`;
   });
@@ -517,14 +517,72 @@ let womenCollectionFunctionality = ()=>{
           <div class="prices">
             <span class="currentPrice">₹ ${item.currentPrice}</span>
             <span class="discountPrice">${item.distcountPrice}</span>
-            <span class="discountRate"><i class="fa-solid fa-arrow-down"></i>${item.discountRte}%</span>
+            <span class="discountRate"><i class="fa-solid fa-arrow-down"></i>${item.discountRte}% off</span>
           </div>  
     </div>`;
   });
   women.innerHTML = innerhtml;
 }
+let kidsCollectionFunctionality = ()=>{
+  let kids = document.querySelector("#kids");
+  let innerhtml = '';
+  kidscart.forEach((item) =>{
+    innerhtml += `
+    <div class="men-card">
+          <img src=${item.Img} alt="">
+          <div class="Sponsored">${item.sponsored}</div>
+          <div class="companyName">${item.company}</div>
+          <div class="productName">${item.productName}</div>
+          <div class="prices">
+            <span class="currentPrice">₹ ${item.currentPrice}</span>
+            <span class="discountPrice">${item.distcountPrice}</span>
+            <span class="discountRate"><i class="fa-solid fa-arrow-down"></i>${item.discountRte}% off</span>
+          </div>  
+    </div>`;
+  });
+  kids.innerHTML = innerhtml;
+}
 
-// Logout functionality - picture image e click korle menu dekhabe
+let groceryCollectionFunctionality = ()=>{
+  let grocery = document.querySelector("#grocery");
+  let innerhtml = '';
+  grocerycart.forEach((item) =>{
+    innerhtml += `
+    <div class="men-card">
+          <img src=${item.Img} alt="">
+          <div class="Sponsored">${item.sponsored}</div>
+          <div class="companyName">${item.company}</div>
+          <div class="productName">${item.productName}</div>
+          <div class="prices">
+            <span class="currentPrice">₹ ${item.currentPrice}</span>
+            <span class="discountPrice">${item.distcountPrice}</span>
+            <span class="discountRate"><i class="fa-solid fa-arrow-down"></i>${item.discountRte}% off</span>
+          </div>  
+    </div>`;
+  });
+  grocery.innerHTML = innerhtml;
+}
+
+let gadgetsCollectionFunctionality = ()=>{
+  let gadgets = document.querySelector("#gadgets");
+  let innerhtml = '';
+  gadgetscart.forEach((item) =>{
+    innerhtml += `
+    <div class="men-card">
+          <img src=${item.Img} alt="">
+          <div class="Sponsored">${item.sponsored}</div>
+          <div class="companyName">${item.company}</div>
+          <div class="productName">${item.productName}</div>
+          <div class="prices">
+            <span class="currentPrice">₹ ${item.currentPrice}</span>
+            <span class="discountPrice"></span>
+            <span class="discountRate"></span>
+          </div>  
+    </div>`;
+  });
+  gadgets.innerHTML = innerhtml;
+}
+
 let logoutFunctionality = () => {
   let profilePic = document.querySelector(".picture img");
   
@@ -539,8 +597,6 @@ let logoutFunctionality = () => {
     }
   });
 };
-
-// Smooth scroll functionality for navigation links
 let smoothScrollFunctionality = () => {
   // Select all navigation links (both desktop and mobile)
   let navLinks = document.querySelectorAll('.nav a[href^="#"], .AncherLink a[href^="#"]');
@@ -571,7 +627,10 @@ let smoothScrollFunctionality = () => {
 
 uploadProfilePictureFunctionality();
 womenCollectionFunctionality();
+kidsCollectionFunctionality();
 menCollectionFunctionality();
+gadgetsCollectionFunctionality();
+groceryCollectionFunctionality();
 slideBarFunctionality();
 hamBurgerFunctionality();
 loginFunctinality();

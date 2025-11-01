@@ -179,3 +179,115 @@ let womenCart = [
     discountRte: 68,
   }
 ];
+
+let kidscart = [
+  {
+    id: '201',
+    sponsored: 'Sponsored',
+    Img: 'images/kids/img1.webp',
+    company: 'VP TEXX',
+    productName: 'Baby Boys & Baby Girls Casual T-shirt Track Pants',
+    currentPrice: 255,
+    distcountPrice : 699,
+    discountRte: 71,
+  },
+
+  {
+    id: '202',
+    sponsored: 'Sponsored',
+    Img: 'images/kids/img2.webp',
+    company: 'Mars Infiniti',
+    productName: 'Boys & Girls Casual Sweatshirt Track Pants',
+    currentPrice: 420,
+    distcountPrice : 1500,
+    discountRte: 72,
+  },
+
+  {
+    id: '203',
+    sponsored: 'Sponsored',
+    Img: 'images/kids/img3.webp',
+    company: 'Posewalk',
+    productName: 'Lace Sneakers For Boys',
+    currentPrice: 500,
+    distcountPrice : 1599,
+    discountRte: 68,
+  },
+
+  {
+    id: '204',
+    sponsored: 'Sponsored',
+    Img: 'images/kids/img4.webp',
+    company: 'selloria',
+    productName: 'KIDS-G-SPORT LOOK BAND SHOCK CHRONOGRAPH RESISTANCE Digital Watch  - For Boys RESISTANCE LUMINOUS',
+    currentPrice: 188,
+    distcountPrice : 799,
+    discountRte: 76,
+  },
+];
+
+let grocerycart = [
+  {
+    id: '301',
+    sponsored: 'Sponsored',
+    Img: 'images/grocery/img1.webp',
+    company: 'COKAI 100% Pure Cold Pressed Virgin Groundnut Oil Plastic Bottle',
+    productName: '500 g',
+    currentPrice: 234,
+    distcountPrice : 399,
+    discountRte: 41,
+  },
+
+  {
+    id: '302',
+    sponsored: 'Sponsored',
+    Img: 'images/grocery/img2.webp',
+    company: 'SHALIMARS Shalimar Edible Grade Coconut Oil PET Bottle',
+    productName: '2 x 500 ml',
+    currentPrice: 792,
+    distcountPrice : 834,
+    discountRte: 5,
+  },
+
+  {
+    id: '303',
+    sponsored: 'Sponsored',
+    Img: 'images/grocery/img3.webp',
+    company: 'Freedom Refined Sunflower Oil Pouch',
+    productName: '1 L',
+    currentPrice: 134,
+    distcountPrice : 185,
+    discountRte: 27,
+  },
+
+  {
+    id: '304',
+    sponsored: 'Sponsored',
+    Img: 'images/grocery/img4.webp',
+    company: 'FORTUNE Premium kachi ghani pure Mustard Oil Pouch',
+    productName: '1 L',
+    currentPrice: 190,
+    distcountPrice : 190,
+    discountRte: 0,
+  },
+];
+
+let gadgetscart = [
+  {
+    id: '401',
+    sponsored: 'Sponsored',
+    Img: 'images/gadgets/img1.webp',
+    company: 'Apple iPhone 16 (Pink, 128 GB)',
+    productName: '1 year warranty for phone and 1 year warranty for in Box Accessories.',
+    currentPrice: 69900,
+  },
+
+  {
+    id: '402',
+    sponsored: 'Sponsored',
+    Img: 'images/gadgets/img2.webp',
+    company: 'Apple MacBook Air M4 - (16 GB/256 GB SSD/macOS Sequoia) MW0Y3HN/A',
+    productName: 'Built-in Apps: App Store, Books, Calendar, Contacts, FaceTime, Find My, Freeform, GarageBand, Home, iMovie, iPhone Mirroring, Keynote, Mail, Maps, Messages, Music, Notes, Numbers, Pages, Passwords, Photo Booth, Photos, Podcasts, Preview, QuickTime Player, Reminders, Safari, Shortcuts, Stocks, Time Machine, Tips, TV, Voice Memos, Weather',
+    currentPrice: 94990,
+  },
+];
